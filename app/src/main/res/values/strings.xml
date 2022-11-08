@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">TTPLApp</string>
+    <string name="project">Quy trình hoạt động</string>
+    <string name="all_task">Tất cả nhiệm vụ</string>
+    <string name="kpi">KPI</string>
+    <string name="home_dashboard">Bảng điều khiển</string>
+    <string name="home_task_reports">Báo cáo công việc</string>
+</resources>
