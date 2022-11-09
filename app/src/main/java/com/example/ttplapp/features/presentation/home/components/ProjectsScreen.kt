@@ -49,7 +49,7 @@ fun ProjectsScreen(
         // on below line we are creating a column for our widgets.
         Column(
             // for column we are specifying modifier on below line.
-            modifier = Modifier.background(Color.White)
+            modifier = Modifier.background(Color.White).padding(horizontal = 16.dp)
         ) {
             Text(
                 stringResource(R.string.home_all_client),
@@ -76,7 +76,7 @@ fun Tabs(pagerState: PagerState) {
 
     Row(
         horizontalArrangement = Arrangement.spacedBy(16.dp),
-        modifier = Modifier.padding(horizontal = 16.dp).height(37.dp),
+        modifier = Modifier.height(37.dp),
     ){
         Button(onClick = {
             scope.launch {
@@ -112,7 +112,6 @@ fun Tabs(pagerState: PagerState) {
         }
     }
 }
-c
 // on below line we are creating a tab content method
 // in which we will be displaying the individual page of our tab .
 @ExperimentalPagerApi
@@ -144,23 +143,6 @@ fun TabContentScreen(data: String, pagerState: PagerState) {
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        // in this column we are specifying the text
-        Text(
-            // on below line we are specifying the text message
-            text = data,
-
-            // on below line we are specifying the text style.
-            style = MaterialTheme.typography.h5,
-
-            // on below line we are specifying the text color
-            color = Orange,
-
-            // on below line we are specifying the font weight
-            fontWeight = FontWeight.Bold,
-
-            //on below line we are specifying the text alignment.
-            textAlign = TextAlign.Center
-        )
         DemoTable()
     }
 }
