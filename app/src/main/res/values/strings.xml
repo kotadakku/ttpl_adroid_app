@@ -5,4 +5,13 @@
     <string name="kpi">KPI</string>
     <string name="home_dashboard">Bảng điều khiển</string>
     <string name="home_task_reports">Báo cáo công việc</string>
+    <string name="home_care">Chăm sóc khách hàng</string>
+    <string name="home_financial">Tài chính</string>
+    <string name="home_leave">Nghỉ phép</string>
+    <string name="home_survey">Khảo sát</string>
+    <string name="home_all_client">Tất cả khách hàng</string>
+    <string name="home_send_invite">Gửi lời mời</string>
+    <string name="home_add_user">Thêm nhân viên</string>
+    <string name="home_all_user">Tất cả nhân viên</string>
+    <string name="projects">Quy trình hoạt động</string>
 </resources>

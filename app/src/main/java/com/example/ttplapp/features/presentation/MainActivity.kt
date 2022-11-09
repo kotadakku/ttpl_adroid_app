@@ -49,6 +49,7 @@ import com.example.ttplapp.ui.theme.TTPLAppTheme
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.ttplapp.features.presentation.Screen
+import com.example.ttplapp.features.presentation.home.components.BottomBar
 import com.example.ttplapp.features.presentation.home.components.HomeScreen
 import com.example.ttplapp.ui.theme.BackgroundNeutral
 import com.example.ttplapp.ui.theme.Content3
@@ -64,15 +65,7 @@ class MainActivity : ComponentActivity() {
             Surface(
                 color = MaterialTheme.colors.background
             ) {
-                val navController = rememberNavController()
-                NavHost(
-                    navController = navController,
-                    startDestination = Screen.HomeScreen.route
-                ) {
-                    composable(route = Screen.HomeScreen.route) {
-                        HomeScreen(navController = navController)
-                    }
-                }
+                HomeScreen()
             }
         }
     }
@@ -201,79 +194,7 @@ fun DefaultPreview() {
     }
 }
 
-@Composable
-fun BottomBar(navController: NavHostController){
-    val bottomMenuItemsList = prepareBottomMenu()
 
-    val contextForToast = LocalContext.current.applicationContext
-    val navController = rememberNavController()
-    var selectedItem by remember {
-        mutableStateOf("Home")
-    }
-    Box(modifier = Modifier.fillMaxWidth()){
-        BottomAppBar(
-            backgroundColor = Color.White,
-            cutoutShape = CircleShape,
-            elevation =  20.dp,
-            modifier = Modifier
-                .align(alignment = Alignment.BottomCenter)
-                .clip(RoundedCornerShape(15.dp, 15.dp, 0.dp, 0.dp))
-
-        ) {
-            bottomMenuItemsList.forEachIndexed { index, menuItem ->
-                if (index == 2) {
-                    // add an empty space for FAB
-                    BottomNavigationItem(
-                        selected = false,
-                        onClick = {},
-                        icon = {},
-                        enabled = false
-                    )
-                }
-                // adding each item
-                BottomNavigationItem(
-                    selectedContentColor = Orange,
-                    unselectedContentColor = Color.Gray,
-                    selected = (selectedItem == menuItem.label),
-                    onClick = {
-                        selectedItem = menuItem.label
-                        Toast.makeText(
-                            contextForToast,
-                            menuItem.label, Toast.LENGTH_SHORT
-                        ).show()
-                    },
-                    icon = {
-                        Icon(
-                            imageVector = menuItem.icon,
-                            contentDescription = menuItem.label,
-                        )
-                    },
-                    label = {
-                        Text(text = menuItem.label)
-                    },
-                    enabled = true
-                )
-            }
-        }
-    }
-}
-
-
-
-
-private fun prepareBottomMenu(): List<BottomMenuItem> {
-    val bottomMenuItemsList = arrayListOf<BottomMenuItem>()
-
-    // add menu items
-    bottomMenuItemsList.add(BottomMenuItem(label = "Home", icon = Icons.Filled.Home))
-    bottomMenuItemsList.add(BottomMenuItem(label = "Profile", icon = Icons.Filled.Person))
-    bottomMenuItemsList.add(BottomMenuItem(label = "Cart", icon = Icons.Filled.ShoppingCart))
-    bottomMenuItemsList.add(BottomMenuItem(label = "Settings", icon = Icons.Filled.Settings))
-
-    return bottomMenuItemsList
-}
-
-data class BottomMenuItem(val label: String, val icon: ImageVector)
 
 
 
@@ -330,9 +251,10 @@ fun ItemReport(
             Spacer(modifier = Modifier.height(8.dp))
             Box(
                 modifier = Modifier
-                    .background(Color(0xFFF0AD00),
+                    .background(
+                        Color(0xFFF0AD00),
                         shape = RoundedCornerShape(4.dp)
-                        )
+                    )
                     .padding(vertical = 2.5.dp, horizontal = 12.dp)
             ){
                 Text("Updated",

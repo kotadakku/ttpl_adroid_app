@@ -20,6 +20,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
@@ -27,6 +30,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil.compose.AsyncImage
+import coil.request.ImageRequest
 
 
 @Composable
@@ -47,17 +52,16 @@ fun ItemReport(
                 Row(
                     verticalAlignment = Alignment.CenterVertically
                 ){
-                    Icon(
-                        Icons.Filled.Home,
-                        tint = Color.White,
+
+                    AsyncImage(
+                        model = ImageRequest.Builder(LocalContext.current)
+                            .data("https://st.depositphotos.com/1018174/2732/i/950/depositphotos_27324093-stock-photo-beautiful-portrait-of-young-man.jpg")
+                            .crossfade(true)
+                            .build(),
+                        //placeholder = painterResource(R.drawable.placeholder),
                         contentDescription = null,
-                        modifier = Modifier
-                            .size(24.dp)
-                            .background(Color(0xFFF0AD00))
-                            .fillMaxWidth()
-                            .fillMaxHeight()
-                            .padding(all = 10.dp)
-                            .clip(CircleShape)
+                        contentScale = ContentScale.Crop,
+                        modifier = Modifier.clip(CircleShape).size(24.dp)
                     )
                     Spacer(modifier = Modifier.width(8.dp))
                     Text("Linh Trần",
